@@ -20,6 +20,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
 
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
+
 
     </head>
     <body id="page-top">
@@ -44,7 +47,8 @@
             <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">BIS Sistemas y Negocios</h1>
+                        <!--<h1 class="text-white font-weight-bold">BIS Sistemas y Negocios</h1>-->
+                        <img src="assets/img/BIS.png" class="img-fluid">
                         <hr class="divider" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
@@ -75,7 +79,7 @@
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-3 col-md-6 text-center">
                         <div class="mt-5">
-                            <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                            <div class="mb-2"><i class="bi bi-wifi fs-1 text-primary"></i></div>
                             <h3 class="h4 mb-2">Implementación de redes corporativas</h3>
                             <p class="text-muted mb-0" style="font-size: 0.8rem">Un sistema de cableado estructurado -diseño e instalación de redes- proporciona una plataforma sobre la cual se construye una estrategia global del sistema de información, que sirven de estructura para el desarrollo de múltiples sistemas de voz, datos, vídeo, multimedia, independientemente del fabricante.
                             </p>
@@ -90,7 +94,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6 text-center">
                         <div class="mt-5">
-                            <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                            <div class="mb-2"><i class="bi-shield-fill-check fs-1 text-primary"></i></div>
                             <h3 class="h4 mb-2">Soporte técnico a domicilio</h3>
                             <p class="text-muted mb-0" style="font-size: 0.8rem">BISistemas cuenta con el personal calificado para ayudarle a poner en marcha sus computadoras y periféricos en su domicilio, contamos con polizas de servicio que le garantizarán tener el apoyo de un profesional en caso de ser necesario.
                             </p>
@@ -223,24 +227,32 @@
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                     <div class="col-lg-6">
-                        <form>
+                        <form method="post" action="contacto.php" id="form">
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="inputName" type="text" placeholder="Enter your name..." / required>
+                                <input class="form-control" id="inputName" type="text" placeholder="Enter your name..." / required name="name">
                                 <label for="inputName">Nombre completo</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" / required>
+                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" / required name="email">
                                 <label for="inputEmail">Email</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="(123) 456-7890" / required>
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="(123) 456-7890" required minlength="10" maxlength="15" name="tel">
                                 <label for="inputPhone">Número de telefono</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="inputMessage" type="text" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                                <textarea class="form-control" id="inputMessage" type="text" placeholder="Enter your message here..." style="height: 10rem" required name="mensaje"></textarea>
                                 <label for="inputMessage">Mensaje</label>
                             </div>
-                            <div class="d-grid"><button class="btn btn-primary btn-xl" type="submit">Enviar</button></div>
+                            <div class="d-grid" >
+                                <div class="g-recaptcha" data-sitekey="6Le5mPEbAAAAAE8_NhLWUcvrXoZM7BHHHB7x_2-J" id="grecaptcha" data-callback="myCallBackFunction"></div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                            <button class="btn btn-primary btn-xl" type="submit"  name="enviar" id="enviar" 
+                                    
+                                >Enviar</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -250,16 +262,19 @@
         <!-- Footer-->
         <footer class="bg-dark py-5">
 
-            <div class="container px-4 px-lg-5">
+            <div class="container px-4 px-lg-5 h-100">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="small text-left text-muted">
                             Teléfono: 22 29 49 29 49 <br>
-                            Email: atencion@bisistemas.com
+                            
+                        </div>
+                        <div class="small text-left text-muted">
+                        Email: atencion@bisistemas.com
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="small text-muted">
                             Dirección: <br>
                             Calle 9 Sur E ,No.Ext.11507 Int.2<br>
@@ -269,7 +284,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4">
+                    <div class="col-lg-4 col-sm-6">
                         <div class="small text-muted">
                             Zona de Cobertura:<br>
 
@@ -449,5 +464,14 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
 
+    <script type="text/javascript">
+
+
+        document.getElementById("enviar").disabled = true;
+
+        //window.myCallBackFunction = function() { alert("HI"); }
+        window.myCallBackFunction = function() { document.getElementById("enviar").disabled = false; }
+
+    </script>
     </body>
 </html>
