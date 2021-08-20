@@ -245,7 +245,7 @@
                                 <label for="inputMessage">Mensaje</label>
                             </div>
                             <div class="d-grid" >
-                                <div class="g-recaptcha" data-sitekey="6Le5mPEbAAAAAE8_NhLWUcvrXoZM7BHHHB7x_2-J" id="grecaptcha" data-callback="myCallBackFunction"></div>
+                                <div class="g-recaptcha" data-sitekey="Tu key generada en recaptcha de google v2" id="grecaptcha" data-callback="myCallBackFunction"></div>
                             </div>
 
                             <div class="form-floating mb-3">
