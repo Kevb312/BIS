@@ -4,7 +4,7 @@ include "admin/conexion.php";
 $recaptcha = $_POST["g-recaptcha-response"];
 $url = 'https://www.google.com/recaptcha/api/siteverify';
 $data = array(
- 'secret' => '6Le5mPEbAAAAAMMz-AZDjMtGGwhsLTD2aqg_MTLf',
+ 'secret' => 'Tu segunda key generada en google recaptcha',
  'response' => $recaptcha
  );
 
